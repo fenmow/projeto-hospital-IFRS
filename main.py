@@ -53,6 +53,26 @@ def RemoveAppointment():
         print("Número inválido. Nenhuma consulta foi removida.")
     return
 
+def RemovePatients():
+    if len(patients) == 0:
+        print("Nenhum usuário cadastrado.")
+        return
+
+    print("Usuários cadastrados:")
+    for i, patient in enumerate(patients):
+        print(
+            f"{i + 1}. Nome: {patient['name']}, Idade: {patient['age']}, Gênero: {patient['gender']}"
+        )
+
+    index = int(input("Informe o número do usuário que deseja excluir: ")) - 1
+
+    if 0 <= index < len(patients):
+        removed_patients = patients.pop(index)
+        print(f"Removido o usuário: {removed_patients['name']}.")
+    else:
+        print("Número inválido. Nenhum usuário foi removido.")
+    return
+
 
 def RemoveDoctor():
     if len(doctors) == 0:
@@ -165,6 +185,7 @@ def pacientActionsMenu():
             print("")
         elif op == 4:
             # TODO
+            RemovePatients()
             print("")
         elif op == 5:
             return
